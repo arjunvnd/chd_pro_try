@@ -8,7 +8,7 @@ contract newCar{
     // }
     // Car[] deployedCarAddress; 
     
-    event sell(uint time,uint bidTime,uint bid);
+    event sell(uint time,uint bidTime,uint bid,Car vehicleAddress,uint index);
     event enterCar( address ownerAddress,string vinNo);
     constructor() public{
         
@@ -49,7 +49,7 @@ contract newCar{
     }    
     function onSales(uint _salesTime , uint _basePrice,uint index,Car carAddress) public {
         require(carRecords[msg.sender][index]==carAddress);
-        emit sell(now,now+(_salesTime*1 minutes),_basePrice);
+        emit sell(now,now+(_salesTime*1 minutes),_basePrice,carAddress,index);
     }
     
 }

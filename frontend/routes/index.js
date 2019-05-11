@@ -8,20 +8,15 @@ router.get('/',async function(req, res, next) {
 });
 
 router.post('/',async (req,res,next)=>{
-  
-  console.log(req.body);
-  
   let ownerAddress = req.body.data;
-  
-  console.log(ownerAddress)
   if(!web3.utils.isAddress(ownerAddress)){
     res.status(400).send({error:'The address you have entered is invalid'})    
   }
   else{
     try {
+      console.log('Inside try')
       let contractAddress = await newCarInstance.methods.getOwnerInfo(ownerAddress).call();
-      
-      console.log(contractAddress)
+      console.log('contractAddress',contractAddress)
       res.send(contractAddress)
     }catch(e){
       res.send({error:'No address registered'})

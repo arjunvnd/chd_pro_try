@@ -19,7 +19,7 @@ submitBtn.addEventListener('click',(e)=>{
             if(resp.status!==200){
                 resp.json()
                     .then(err=>{
-                        displayElement(err.error)
+                        displayElement(err.error,'error')
                     })
             }
             else{
@@ -30,17 +30,17 @@ submitBtn.addEventListener('click',(e)=>{
         })
         .then(vehicles=>{
             if( vehicles !== undefined && vehicles.length>0 ){
-                console.log(`Hell`)
+                // console.log(`Hell`)
 
                 vehicles.forEach((vehicle,index)=>{
                     displayElement(vehicle,index)
-                    console.log(`Inside cb`)
+                    // console.log(`Inside cb`)
 
                 })    
                 
 
             }else if(vehicles.length===0){
-                displayElement('Not registered')
+                displayElement('Not registered','error')
             }
 
             
@@ -53,12 +53,24 @@ submitBtn.addEventListener('click',(e)=>{
 function displayElement(element,index){
     let queryString = makesQuery(element,index)
     let divEl = document.createElement('div');
-    let paraEl = document.createElement('a');
-    paraEl.setAttribute("class",'child');
-    paraEl.innerHTML = element;
-    paraEl.href = queryString;
-    divEl.appendChild(paraEl);
-    displayEl.appendChild(divEl);
+    if(index === 'error'){
+        let paraEl = document.createElement('p');
+        paraEl.setAttribute("class",'error');
+        paraEl.innerHTML = element;
+        divEl.appendChild(paraEl);
+        displayEl.appendChild(divEl);
+
+    }
+    else{
+        console.log('inside')
+        let paraEl = document.createElement('a');
+        paraEl.setAttribute("class",'child');
+        paraEl.innerHTML = element;
+        paraEl.href = queryString;
+        divEl.appendChild(paraEl);
+        displayEl.appendChild(divEl);
+    }
+
 
 }
 function removeDisplayElements(){
