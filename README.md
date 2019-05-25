@@ -1,9 +1,7 @@
 # Vehicle Registeration and Sales using Ethereum
 
 
-#############################
-Installation Instrucations
-#############################
+# Installation Instrucations
 
 Please ensure that your computer has the following prerequisites installed before proceeding:
 
@@ -24,7 +22,7 @@ Please ensure that your computer has the following prerequisites installed befor
 4) From the terminal navigate to 'frontend' and execute 'npm start'.
 
 
-Description:
+# Description:
 
 This is a simple application that helps in keeping vehicle history.Vehicle details are entered during the time
 of purchase of the veicle.Presently it will keep track of the owner and the sales record , it can be easilt 
